@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FizzBuzz.Interfaces;
+using FizzBuzz.Services;
+using System;
+using System.Collections.Generic;
 
 /**
  *
@@ -18,39 +21,13 @@
 
 namespace FizzBuzz
 {
-    public class FizzBuzzEngine
-    {
-        public void Run(int limit = 100)
-        {
-            for (int i = 1; i <= limit; i++)
-            {
-                string output = "";
-                if (i % 3 == 0)
-                {
-                    output += "Fizz";
-                }
-                
-                if (i % 5 == 0)
-                {
-                    output += "Buzz";
-                }
-
-                if (string.IsNullOrEmpty(output))
-                {
-                    output = i.ToString();
-                }
-                
-                Console.WriteLine("{0}: {1}", i, output);
-            }
-        }
-    }
-    
+ 
     public class Program
     {
         public static void Main(string[] args)
         {
-            FizzBuzzEngine engine = new FizzBuzzEngine();
-            engine.Run();
+            IFizzBuzzService fizzBuzzService = new FizzBuzzService(100);
+            fizzBuzzService.Run();
         }
     }
 }
